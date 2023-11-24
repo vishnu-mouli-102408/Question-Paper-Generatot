@@ -15,6 +15,16 @@ class QuestionService {
     }
   }
 
+  async createMany(data) {
+    try {
+      const response = await this.questionRepository.createMany(data);
+      return response;
+    } catch (error) {
+      console.log("Error Occured in Service Layer");
+      throw error;
+    }
+  }
+
   async destroy(id) {
     try {
       const response = await this.questionRepository.destroy(id);

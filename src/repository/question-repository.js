@@ -11,6 +11,16 @@ class QuestionRepository {
     }
   }
 
+  async createMany(data) {
+    try {
+      const response = await Question.insertMany(data);
+      return response;
+    } catch (error) {
+      console.log("Error Occured in Repository Layer");
+      throw error;
+    }
+  }
+
   async destroy(id) {
     try {
       const response = await Question.findByIdAndDelete(id);

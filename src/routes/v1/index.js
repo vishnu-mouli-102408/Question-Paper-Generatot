@@ -3,6 +3,7 @@ const router = express.Router();
 
 import {
   create,
+  createMany,
   destroy,
   get,
   getAll,
@@ -10,6 +11,7 @@ import {
 } from "../../controllers/question-controller.js";
 
 router.post("/question", create);
+router.post("/questions", createMany);
 router.get("/question/:id", get);
 router.get("/questions", getAll);
 router.delete("/question/:id", destroy);
