@@ -63,6 +63,16 @@ class QuestionRepository {
       throw error;
     }
   }
+
+  async updateMultiple(data) {
+    try {
+      const response = await Question.updateMany(data);
+      return response;
+    } catch (error) {
+      console.log("Error Occured in Repository Layer");
+      throw error;
+    }
+  }
 }
 
 export default QuestionRepository;

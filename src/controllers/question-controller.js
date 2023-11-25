@@ -124,3 +124,49 @@ export const update = async (req, res) => {
     });
   }
 };
+
+export const updateMultiple = async (req, res) => {
+  try {
+    const response = await questionService.updateMultiple(req.body);
+    return res.status(StatusCodes.OK).json({
+      data: response,
+      success: true,
+      message: "Successfully Updated Questions",
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(StatusCodes.BAD_GATEWAY).json({
+      data: {},
+      success: false,
+      message: "Can't Update Questions",
+      err: error,
+    });
+  }
+};
+
+export const generatePaper = async (req, res) => {
+  try {
+    const response = await questionService.generatePaper(
+      req.body.totalMarks,
+      req.body.easyP,
+      req.body.mediumP,
+      req.body.hardP
+    );
+    console.log(req.body);
+    return res.status(StatusCodes.OK).json({
+      data: response,
+      success: true,
+      message: "Successfully Generated Question Paper",
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(StatusCodes.BAD_GATEWAY).json({
+      data: {},
+      success: false,
+      message: "Can't generate Paper",
+      err: error,
+    });
+  }
+};
